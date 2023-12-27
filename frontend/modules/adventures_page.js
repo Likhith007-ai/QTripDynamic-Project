@@ -31,9 +31,9 @@ function addAdventureToDOM(adventures) {
 
   adventures.forEach((key) => {    
     var element = document.getElementById("data");
-    element.classList.add("d-flex");
+    element.classList.add( "d-flex");
     var add = document.createElement("div");
-    add.classList.add("col-12","col-lg-3","col-md-4","col-sm-6","mb-4","mt-3");
+    add.classList.add("col-12","col-lg-3","col-md-4","col-sm-6","mb-4","mt-3" ,"position-relative");
     var cat = document.createElement("div");
     cat.classList.add("category-banner");
     cat.innerText = key.category;
@@ -51,8 +51,8 @@ function addAdventureToDOM(adventures) {
     
     var cardbody = document.createElement("div");
     cardbody.classList.add("card-body","mt-0","mb-0","pb-0");
-    var cardbody2 = document.createElement("div");
-    cardbody2.classList.add("card-body","mt-0","mb-0","pt-0","pb-0");
+    var cardbody2 = document.createElement("div" );
+    cardbody2.classList.add("mt-0","mb-0","pt-0","pb-0","d-flex","justify-content-between");
     
     var h = document.createElement("h5");
     h.classList.add("card-title","float-left");

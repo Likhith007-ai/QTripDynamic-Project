@@ -43,38 +43,40 @@ footer {
   flex-wrap: wrap; */
 }
 .tile {
-  position: relative;
-  height: 100%;
-  /* width: calc(25% - 20px); */
-  /* padding: 6px; */
-  border-radius: 8px;
-  cursor: pointer;
-  -webkit-transition: 0.2s all;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-}
-.tile img {
+  /* TODO: MODULE_CARDS */
+  /* 1. Fill in the required properties. */
+  background: #fff;  
+ }
+ .tile img {
+  /* TODO: MODULE_CARDS */
+  /* 1. Fill in the required properties. */
   width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  -webkit-transition: 0.2s all;
-  /* -webkit-filter: brightness(70%); */
-}
-.tile img:hover {
-  -webkit-filter: brightness(50%);
-  transform: scale(1.1);
-}
-
-.tile-text {
+  border-radius: 12px;
+  height: 360px;
+  margin-bottom: 30px;
+ }
+ .tile img:hover {
+  /* TODO: MODULE_CARDS */
+  /* 1. Fill in the required properties. */
+  filter: brightness(50%);
+  transform:scale(1.1,1.1);
+  border-radius: 12px;
+  }
+  
+ /* Hint: Notice the position:absolute and z-index properties. */
+ /* Think about how those in relation to the existing "tile" classes. */
+ .tile-text {
   position: absolute;
   z-index: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
-}
+  text-align: center;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:white;
+ }
+ 
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -82,7 +84,7 @@ footer {
 
   /* Set a specific height */
   height: 50vh;
-  width: 100vw;
+  /* width: 100vw; */
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
@@ -111,7 +113,7 @@ footer {
 .activity-card {
   color: #000;
   position: relative;
-  height: 350px;
+  height:auto;
   /* width: calc(25% - 20px); */
   /* padding: 6px; */
   border: 1px solid #ddd;
@@ -122,12 +124,14 @@ footer {
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
 }
 .activity-card img {
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height: 260px;
+  /* height: 80%; */
   /* border-radius: 8px; */
   -webkit-transition: 0.2s all;
   /* -webkit-filter: brightness(70%); */
@@ -172,10 +176,29 @@ footer {
 }
 
 .category-filter {
+  position: relative;
+  display: inline-block;
   border: 1px solid orange;
   border-radius: 20px;
   padding: 5px 20px;
   margin: 10px 10px 10px 0px;
+}
+
+.category-filter .close{
+  position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
 }
 .category-banner {
   position: absolute;
@@ -261,3 +284,4 @@ input[type="number"] {
   padding: 16px;
   margin-bottom: 30px;
 }
+

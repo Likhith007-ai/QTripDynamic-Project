@@ -1,5 +1,5 @@
 // import { elementRoles } from "aria-query";
-import config from "../conf/index";
+import config from "../conf/index.js";
 
 async function init() {
   //Fetches list of all cities along with their images and description
@@ -21,47 +21,47 @@ async function fetchCities() {
   try{
   let response = await fetch(`${config.backendEndpoint}/cities`);
   let user = await response.json();
+  console.log(user)
    return user;
 }catch(e) {
   return null;
 }
 }
-fetchCities();
+// fetchCities();
 
 //Implementation of DOM manipulation to add cities
 function addCityToDOM(id, city, description, image) {
   // TODO: MODULE_CITIES
   // 1. Populate the City details and insert those details into the DOM
-  let cityDetailsSection = document.getElementById("data");
-  cityDetailsSection.classList.add("d-flex","flex-wrap","justify-content-center");//----------------
-  
-  let add = document.createElement("div");
-  add.classList.add("col-12", "col-lg-3", "col-md-4","col-sm-6","tile","text-center","mx-0","my-4");
+  let cards = document.getElementById("data");
 
-  let link = document.createElement("a");
-  link.id = id;
-  link.href ="pages/adventures/?city=" + id;
-  
+  let cardDiv = document.createElement("div");
+  // cardDiv.id = id;
+  cardDiv.className = "col-lg-3 col-md-3 col-sm-6 tile";
 
-  let division = document.createElement("div");
-  division.className = "tile-text";
+  let anchor = document.createElement("a");
+  anchor.id = id;
+  anchor.setAttribute("href", "pages/adventures/?city=" + id);
 
-  let img = document.createElement("img");
-  img.classList.add("img-thumbnail");
-  img.src = image;
+  let infoDiv = document.createElement("div");
+  infoDiv.className = "tile-text text-center";
 
-  let title = document.createElement("h5");
-  title.innerText = city;
+  let name = document.createElement("h5");
+  name.textContent = city;
 
-  let destination = document.createElement("p");
-  destination.innerText = description;
+  let desc = document.createElement("p");
+  desc.textContent = description;
 
-  link.appendChild(img);
-  division.appendChild(title);
-  division.appendChild(destination);
-  link.appendChild(division);
-  add.appendChild(link);
-  cityDetailsSection.appendChild(add);
+  infoDiv.append(name, desc);
+
+  let cityImage = document.createElement("img");
+  cityImage.src = image;
+  cityImage.className = "card-img";
+
+  anchor.append(cityImage);
+  cardDiv.append(anchor, infoDiv);
+
+  cards.append(cardDiv);
 }
 
 export { init, fetchCities, addCityToDOM };
