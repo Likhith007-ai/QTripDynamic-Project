@@ -4,6 +4,6 @@
 // export default config;
   
 // File: frontend/conf/index.js
-const config = { backendEndpoint: "http://52.66.216.147:8082"};
+const config = { backendEndpoint: "http://65.2.136.118:8082"};
 
 export default config;  

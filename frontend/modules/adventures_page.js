@@ -50,9 +50,9 @@ function addAdventureToDOM(adventures) {
     image.src = key.image;
     
     var cardbody = document.createElement("div");
-    cardbody.classList.add("card-body","mt-0","mb-0","pb-0");
+    cardbody.classList.add("card-body","mt-0","mb-0","pb-0","d-flex","justify-content-between");
     var cardbody2 = document.createElement("div" );
-    cardbody2.classList.add("mt-0","mb-0","pt-0","pb-0","d-flex","justify-content-between");
+    cardbody2.classList.add("card-body","mt-0","mb-0","pt-0","pb-0","d-flex","justify-content-between");
     
     var h = document.createElement("h5");
     h.classList.add("card-title","float-left");
