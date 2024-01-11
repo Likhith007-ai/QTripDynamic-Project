@@ -41,7 +41,10 @@ function addAdventureToDOM(adventures) {
     var anchor = document.createElement("a");
     anchor.id = key.id;
     anchor.href = "detail/?adventure="+key.id;
-    
+//     By entering each city's name manually
+// No need to mention anything explicitly, just send request to http://<workspace-ip>:8081/frontend/pages/adventures/?city=bengaluru
+// By extracting the city id from the URL and using it in place of <city-id> in http://<workspace-ip>:8081/frontend/pages/adventures/?city=<city-id>
+// None of the above
     var card = document.createElement("div");
     card.classList.add("card","activity-card");
     
