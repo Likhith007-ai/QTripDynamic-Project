@@ -1,0 +1,16 @@
+{
+  "name": "likhithsai7979-me_qtripdynamic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.crio.do:COHORT_ME_QTRIPDYNAMIC_ENROLL_1687435263992/likhithsai7979-ME_QTRIPDYNAMIC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

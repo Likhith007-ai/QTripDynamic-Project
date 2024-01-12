@@ -1,5 +1,7 @@
 
+
 import config from "../conf/index.js";
+
 
 //Implementation to extract city from query params
 function getCityFromURL(search) {
@@ -8,7 +10,9 @@ function getCityFromURL(search) {
   let cityId = search.split("=")[1];
   return cityId;
 
+
 }
+
 
 //Implementation of fetch call with a paramterized input based on city
 async function fetchAdventures(city) {
@@ -24,10 +28,13 @@ async function fetchAdventures(city) {
 }
 
 
+
+
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
+
 
   adventures.forEach((key) => {    
     var element = document.getElementById("data");
@@ -37,26 +44,23 @@ function addAdventureToDOM(adventures) {
     var cat = document.createElement("div");
     cat.classList.add("category-banner");
     cat.innerText = key.category;
-    
+   
     var anchor = document.createElement("a");
     anchor.id = key.id;
     anchor.href = "detail/?adventure="+key.id;
-//     By entering each city's name manually
-// No need to mention anything explicitly, just send request to http://<workspace-ip>:8081/frontend/pages/adventures/?city=bengaluru
-// By extracting the city id from the URL and using it in place of <city-id> in http://<workspace-ip>:8081/frontend/pages/adventures/?city=<city-id>
-// None of the above
+   
     var card = document.createElement("div");
     card.classList.add("card","activity-card");
-    
+   
     var image = document.createElement("img");
     image.classList.add("card-img-top");
     image.src = key.image;
-    
+   
     var cardbody = document.createElement("div");
     cardbody.classList.add("card-body","mt-0","mb-0","pb-0","d-flex","justify-content-between");
     var cardbody2 = document.createElement("div" );
     cardbody2.classList.add("card-body","mt-0","mb-0","pt-0","pb-0","d-flex","justify-content-between");
-    
+   
     var h = document.createElement("h5");
     h.classList.add("card-title","float-left");
     h.innerHTML = key.name;
@@ -69,7 +73,7 @@ function addAdventureToDOM(adventures) {
     var p1 = document.createElement("p");
     p1.classList.add("card-text","float-right");
     p1.innerHTML = key.duration + " HOURS";
-    
+   
     element.appendChild(add);
     add.appendChild(cat);
     add.appendChild(anchor);
@@ -80,10 +84,12 @@ function addAdventureToDOM(adventures) {
     cardbody.appendChild(h);
     cardbody.appendChild(p);
     cardbody2.appendChild(h1);
-    cardbody2.appendChild(p1); 
+    cardbody2.appendChild(p1);
+
 
 });
 }
+
 
 //Implementation of filtering by duration which takes in a list of adventures, the lower bound and upper bound of duration and returns a filtered list of adventures.
 function filterByDuration(list, low, high) {
@@ -94,6 +100,7 @@ function filterByDuration(list, low, high) {
   })
   return l;
 }
+
 
 //Implementation of filtering by category which takes in a list of adventures, list of categories to be filtered upon and returns a filtered list of adventures.
 function filterByCategory(list, categoryList) {
@@ -109,12 +116,15 @@ function filterByCategory(list, categoryList) {
   return l;
 }
 
+
 // filters object looks like this filters = { duration: "", category: [] };
+
 
 //Implementation of combined filter function that covers the following cases :
 // 1. Filter by duration only
 // 2. Filter by category only
 // 3. Filter by duration and category together
+
 
 function filterFunction(list, filters) {
   // TODO: MODULE_FILTERS
@@ -138,6 +148,7 @@ function filterFunction(list, filters) {
  }
 }
 
+
 //Implementation of localStorage API to save filters to local storage. This should get called everytime an onChange() happens in either of filter dropdowns
 function saveFiltersToLocalStorage(filters) {
   // TODO: MODULE_FILTERS
@@ -146,6 +157,7 @@ function saveFiltersToLocalStorage(filters) {
   return true;
 }
 
+
 //Implementation of localStorage API to get filters from local storage. This should get called whenever the DOM is loaded.
 function getFiltersFromLocalStorage() {
   // TODO: MODULE_FILTERS
@@ -153,12 +165,14 @@ function getFiltersFromLocalStorage() {
 
   return JSON.parse(localStorage.getItem('filters'));
   // Place holder for functionality to work in the Stubs
-  
+ 
 }
+
 
 //Implementation of DOM manipulation to add the following filters to DOM :
 // 1. Update duration filter with correct value
 // 2. Update the category pills on the DOM
+
 
 function generateFilterPillsAndUpdateDOM(filters) {
   // TODO: MODULE_FILTERS
@@ -172,12 +186,13 @@ function generateFilterPillsAndUpdateDOM(filters) {
     cross.classList.add("close");
     cross.innerHTML = "&times;";
     cross.id = x;
-    // cross.onclick = function(event) { 
+    // cross.onclick = function(event) {
     //   deleteCategory(event);
     // };
     data.appendChild(cross);
     element.appendChild(data);
   })
+
 
 }
 export {
