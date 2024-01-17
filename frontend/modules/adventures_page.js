@@ -125,7 +125,6 @@ function filterByCategory(list, categoryList) {
 // 2. Filter by category only
 // 3. Filter by duration and category together
 
-
 function filterFunction(list, filters) {
   // TODO: MODULE_FILTERS
   // 1. Handle the 3 cases detailed in the comments above and return the filtered list of adventures
