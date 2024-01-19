@@ -284,3 +284,7 @@ input[type="number"] {
   padding: 16px;
   margin-bottom: 30px;
 }
+
+#reservation-table-parent {
+  overflow: auto;
+}

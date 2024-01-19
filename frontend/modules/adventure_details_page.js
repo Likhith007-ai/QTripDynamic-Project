@@ -96,50 +96,56 @@ function calculateReservationCostAndUpdateDOM(adventure, persons) {
 }
 
 //Implementation of reservation form submission using JQuery
-function captureFormSubmitUsingJQuery(adventure) {
+function captureFormSubmit(adventure) {
   // TODO: MODULE_RESERVATIONS
   // 1. Capture the query details and make a POST API call using JQuery to make the reservation
   // 2. If the reservation is successful, show an alert with "Success!" and refresh the page. If the reservation fails, just show an alert with "Failed!".
-        $("#myForm").submit(function(e) {
+  const form = document.getElementById("myForm");
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    console.log(form.elements["date"].value);
 
-        //prevent Default functionality
-        e.preventDefault();
+    const data = {
+      name: form.elements["name"].value,
+      date: new Date(form.elements["date"].value),
+      person: form.elements["person"].value,
+      adventure: adventure["id"]
+    };
 
-        // //get the action-url of the form
-        var actionurl = e.currentTarget.action;
-        let adventureId = adventure.id;
-        let data = $("#myForm").serialize() + '&adventure=' + adventureId;
-        //do your own request an handle the results
-        $.ajax({
-                url: actionurl,
-                type: 'post',
-                dataType: 'json',
-                data: data,
-                success: function() {
-                    alert("Success!")
-                    location.reload();
-                },
-                error: function(){
-                    alert("Failed!")
-                    // location.reload();
-                }
-        });
+    console.log(data);
 
-    });
+    try {
+      const url = `${config.backendEndpoint}/reservations/new`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-
+      // if (response.ok) {
+        alert("Success");
+        window.location.reload();
+      // } else {
+      //   alert("Failed!");
+      // }
+    } catch (error) {
+      console.error(error);
+      alert("failed");
+    }
+  });
 }
 
-//Implementation of success banner after reservation
+// Implementation of success banner after reservation
 function showBannerIfAlreadyReserved(adventure) {
   // TODO: MODULE_RESERVATIONS
-  // 1. If user has already reserved this adventure, show the reserved-banner, else don't
-  if(adventure.reserved == true){
+  // 1. If the user has already reserved this adventure, show the reserved-banner, else don't
+  if (adventure.reserved === true) {
     document.getElementById("reserved-banner").style.display = "block";
-  }else{
+  } else {
     document.getElementById("reserved-banner").style.display = "none";
   }
-  
 }
 
 export {
@@ -148,7 +154,7 @@ export {
   addAdventureDetailsToDOM,
   addBootstrapPhotoGallery,
   conditionalRenderingOfReservationPanel,
-  captureFormSubmitUsingJQuery,
+  captureFormSubmit,
   calculateReservationCostAndUpdateDOM,
   showBannerIfAlreadyReserved,
 };

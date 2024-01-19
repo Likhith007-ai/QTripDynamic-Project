@@ -47,7 +47,7 @@ function addAdventureToDOM(adventures) {
    
     var anchor = document.createElement("a");
     anchor.id = key.id;
-    anchor.href = "detail/?adventure="+key.id;
+    anchor.href = `detail/?adventure=${key.id}`;
    
     var card = document.createElement("div");
     card.classList.add("card","activity-card");
